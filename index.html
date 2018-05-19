@@ -14,7 +14,8 @@
     <!-- Firebase CDN -->
     <script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
     <!-- Moment CDN -->
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>   
+    <link rel="stylesheet" type="text/css" href="assets/css/stylesheet.css"> 
 
 </head>
 <body>
@@ -22,7 +23,7 @@
         <!-- Jumbotron with titile -->
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-4">Train Schedule</h1>
+                <h1 class="display-4" id="trainImage">Be on time. Know when the next train is passing by!</h1>
             </div>
         </div>             
     </header>
@@ -70,17 +71,17 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="destination">Destination</label>
+                                <label for="destination">Destination (City, State)</label>
                                 <input type="text" class="form-control" id="destination">
                             </div>
 
                             <div class="form-group">
-                                <label for="firstTrain">First Train Time</label>
+                                <label for="firstTrain">First Train Time (HH:mm)</label>
                                 <input type="text" class="form-control" id="initialTrainTime">
                             </div>
 
                             <div class="form-group">
-                                <label for="destination">Frequency</label>
+                                <label for="destination">Frequency (min)</label>
                                 <input type="text" class="form-control" id="frequency">
                             </div>
 

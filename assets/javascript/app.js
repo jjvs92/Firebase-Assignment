@@ -53,7 +53,7 @@ $(document).ready(function(){
     frequency = $("#frequency").val().trim();            
 
     if(trainName === "" || destination === "" || initialTrainTime === "" || frequency === ""){
-        alert("please complete all fields");
+        alert("please fill all fields");
     }else {
         console.log(trainName);
         console.log(destination);
