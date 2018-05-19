@@ -23,19 +23,24 @@ $(document).ready(function(){
     var returnedDestination = childSnapshot.val().whereTo;
     var returnedTrainTime = childSnapshot.val().firstOut;
     var returnedFrequency = childSnapshot.val().howOften;
-    var firstTimeConverted = moment(returnedTrainTime, "HH:mm");
-    var startTime = firstTimeConverted._i;
-    // console.log(firstTimeConverted);        
+    var firstTimeConverted = moment(returnedTrainTime, "HH:mm").subtract(1, "years");
+    console.log(firstTimeConverted);   
+    // Current Time
     var currentTime = moment();
-    // console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));   
-    // console.log(returnedTrainTime);
-    var diffTime = moment(startTime).diff(moment(currentTime), "minutes");
-    console.log(diffTime);
-    
-    // var firstTimeConverted = moment(returnedTrainTime).format("hh:mm");
-    console.log(startTime);
+    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));  
+    // Difference between the times
+    var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+    console.log("DIFFERENCE IN TIME: " + diffTime);  
+    // // Time apart (remainder)
+    var tRemainder = diffTime % returnedFrequency;
+    console.log(tRemainder);    
+    var tMinutesTillTrain = returnedFrequency - tRemainder;
+    console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+    // Next Train
+    var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));    
 
-    $("#tableInfo").append("<tr><td>" + returnedName + "</td><td>" + returnedDestination + "</td><td>" + returnedFrequency + "</td><td>placeholder</td><td>placeholder</td>") 
+    $("#tableInfo").append("<tr><td>" + returnedName + "</td><td>" + returnedDestination + "</td><td>" + returnedFrequency + "</td><td>" + moment(nextTrain).format("hh:mm") + "</td><td>" + tMinutesTillTrain + "</td>") 
   })
   
   
